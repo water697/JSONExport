@@ -158,24 +158,26 @@ class FileRepresenter{
         fileContent += "//\n//\t\(className).\(lang.fileExtension)\n"
         if let me = ABAddressBook.sharedAddressBook()?.me(){
             
-            if let firstName = me.valueForProperty(kABFirstNameProperty as String) as? String{
-                fileContent += "//\n//\tCreate by \(firstName)"
-                if let lastName = me.valueForProperty(kABLastNameProperty as String) as? String{
-                   fileContent += " \(lastName)"
-                }
-            }
+//            if let firstName = me.valueForProperty(kABFirstNameProperty as String) as? String{
+//                fileContent += "//\n//\tCreate by \(firstName)"
+//                if let lastName = me.valueForProperty(kABLastNameProperty as String) as? String{
+//                   fileContent += " \(lastName)"
+//                }
+//            }
             
+            if let firstName = me.valueForProperty(kABFirstNameProperty as String) as? String{
+                fileContent += "//\n//\tCreate by 林建清 "
+            }
             
             fileContent += " on \(getTodayFormattedDay())\n//\tCopyright © \(getYear())"
             
             if let organization = me.valueForProperty(kABOrganizationProperty as String) as? String{
                 fileContent += " \(organization)"
             }
-            
-            fileContent += ". All rights reserved.\n"
         }
-        
-        fileContent += "//\tModel file Generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport\n\n"
+        fileContent += "林建清. All rights reserved.\n"
+
+//        fileContent += "//\tModel file Generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport\n\n"
         
     }
     
@@ -464,7 +466,7 @@ class FileRepresenter{
                 propertyStr = propertyStr.stringByReplacingOccurrencesOfString(lowerCaseVarType, withString: lowerCaseType)
                 
             }else{
-                propertyStr = constructor.fetchBasicTypePropertyFromMap
+                propertyStr = constructor.fetchBasicTypePropertyFromMap == nil ? "":constructor.fetchBasicTypePropertyFromMap;
             }
             
         }else{

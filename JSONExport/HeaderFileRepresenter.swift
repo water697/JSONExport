@@ -91,13 +91,15 @@ class HeaderFileRepresenter : FileRepresenter{
     {
         if let me = ABAddressBook.sharedAddressBook()?.me(){
             fileContent += "//\n//\t\(className).\(lang.headerFileData.headerFileExtension)\n"
+//            if let firstName = me.valueForProperty(kABFirstNameProperty as String) as? String{
+//                fileContent += "//\n//\tCreate by \(firstName)"
+//                if let lastName = me.valueForProperty(kABLastNameProperty as String) as? String{
+//                    fileContent += " \(lastName)"
+//                }
+//            }
             if let firstName = me.valueForProperty(kABFirstNameProperty as String) as? String{
-                fileContent += "//\n//\tCreate by \(firstName)"
-                if let lastName = me.valueForProperty(kABLastNameProperty as String) as? String{
-                    fileContent += " \(lastName)"
-                }
+                fileContent += "//\n//\tCreate by 林建清 "
             }
-            
             
             fileContent += " on \(getTodayFormattedDay())\n//\tCopyright © \(getYear())"
             
@@ -105,8 +107,8 @@ class HeaderFileRepresenter : FileRepresenter{
                 fileContent += " \(organization)"
             }
             
-            fileContent += ". All rights reserved.\n//\n\n"
-            fileContent += "//\tModel file Generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport\n\n"
+            fileContent += "林建清. All rights reserved.\n\n"
+//            fileContent += "//\tModel file Generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport\n\n"
         }
         
     }
